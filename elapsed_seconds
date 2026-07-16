@@ -1,0 +1,25 @@
+#include <string>
+class Solution {
+public:
+    int secondsBetweenTimes(string startTime, string endTime) {
+        string start_hours = startTime.substr(0,2);
+        string start_mins = startTime.substr(3,2);
+        string start_secs = startTime.substr(6, 2);
+        int s_hours = stoi(start_hours);
+        int s_mins = stoi(start_mins);
+        int s_secs = stoi(start_secs);
+
+        string end_hours = endTime.substr(0,2);
+        string end_mins = endTime.substr(3,2);
+        string end_secs = endTime.substr(6,2);
+        int e_hours = stoi(end_hours);
+        int e_mins = stoi(end_mins);
+        int e_secs = stoi(end_secs);
+        int total = 0;
+        total += (e_hours - s_hours) * 3600;
+        total += (e_mins - s_mins) * 60;
+        total += (e_secs - s_secs);
+
+        return total;
+    }
+};
