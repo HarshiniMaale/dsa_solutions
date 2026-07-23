@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool lemonadeChange(vector<int>& bills) {
+        vector <int> freq(3, 0);
+        
+        for(int change : bills) {
+            if(change == 5) {
+                freq[0]++;
+                continue;
+            }
+            else if(change == 10) {
+                if(freq[0] < 1) return false;
+                freq[0]--;
+                freq[1]++;
+                continue;
+            }
+            else {
+                if(freq[0] < 1) return false;
+                if(freq[1] < 1) {
+                    if(freq[0] < 3) return false;
+                    freq[0]-=3;
+                    continue;
+                }
+                freq[2]++;
+                freq[0]--;
+                freq[1]--;
+                continue;
+            }
+        }
+        return true;
+    }
+};
